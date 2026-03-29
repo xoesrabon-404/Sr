@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ SYSTEM CRITICAL ERROR ⚠️</title>
+    <style>
+        body { background-color: black; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; padding-top: 15vh; overflow: hidden; cursor: crosshair; }
+        
+        /* নাম ও টাইটেল অ্যানিমেশন */
+        h1 { font-size: 8vw; color: #00ff00; text-shadow: 0 0 20px #00ff00; margin: 0; }
+        h2 { font-size: 5vw; color: #ff0000; text-shadow: 0 0 20px red; animation: shake 0.1s infinite; }
+        
+        /* ওভারলে (সাউন্ড প্লে করার জন্য) */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; border: 5px solid red; }
+        
+        @keyframes shake {
+            0% { transform: translate(2px, 2px) rotate(0deg); }
+            25% { transform: translate(-2px, -2px) rotate(1deg); }
+            50% { transform: translate(2px, -2px) rotate(-1deg); }
+            100% { transform: translate(-2px, 2px) rotate(0deg); }
+        }
+        
+        .status { font-size: 20px; color: #aaa; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="startPrank()">
+        <div style="text-align: center;">
+            <h1 style="color: red;">⚠️ WARNING ⚠️</h1>
+            <p>Your System is Infected by Virus!</p>
+            <p>[ CLICK TO CLEAN NOW ]</p>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <h1>HACKED BY</h1>
+        <h2>Cyber Jod Srabon 444</h2>
+        
+        <div class="status">
+            <p>> ACCESSING GALLERY... [OK]</p>
+            <p>> DOWNLOADING WHATSAPP CHATS... [88%]</p>
+            <p>> UPLOADING DATA TO CYBER JOD SERVER... [OK]</p>
+        </div>
+    </div>
+
+    <audio id="hackerSfx" loop>
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startPrank() {
+            // ওভারলে মুছে ফেলা
+            document.getElementById('overlay').style.display = 'none';
+            
+            // সাউন্ড প্লে করা
+            var audio = document.getElementById('hackerSfx');
+            audio.volume = 1.0; // ফুল ভলিউম
+            audio.play();
+            
+            // ফোন হলে ভাইব্রেশন হবে
+            if (navigator.vibrate) {
+                navigator.vibrate([1000, 500, 1000, 500, 2000]);
+            }
+        }
+    </script>
+</body>
+</html>
