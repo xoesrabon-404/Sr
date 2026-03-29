@@ -3,42 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚠️ WARNING: SYSTEM FAILURE ⚠️</title>
+    <title>⚠️ CRITICAL WARNING ⚠️</title>
     <style>
-        body { background-color: black; margin: 0; padding: 0; overflow: hidden; font-family: 'Courier New', monospace; }
-        #video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 100; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; border: 5px solid red; }
-        h1 { font-size: 8vw; color: #0f0; text-shadow: 0 0 10px #0f0; }
-        .jod { color: red; font-size: 5vw; animation: flash 0.5s infinite; }
-        @keyframes flash { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        body { background: black; margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
+        #overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: black; z-index: 1000; display: flex; align-items: center; justify-content: center; color: white; border: 10px solid red; cursor: pointer; text-align: center; }
+        video { position: fixed; top:0; left:0; width:100%; height:100%; object-fit: cover; display: none; }
+        h1 { font-size: 40px; color: #0f0; margin-bottom: 0; }
+        .jod { color: red; font-size: 25px; font-weight: bold; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div id="overlay" onclick="startHack()">
-        <div style="text-align: center;">
-            <h1>⚠️ ERROR 444 ⚠️</h1>
-            <p>CRITICAL VIRUS BY:</p>
+    <div id="overlay" onclick="startPrank()">
+        <div>
+            <h1 style="color: #0f0;">⚠️ ERROR 444 ⚠️</h1>
+            <p>INFECTED BY:</p>
             <div class="jod">Cyber Jod Srabon 444</div>
-            <p style="font-size: 18px; margin-top: 20px;">[ CLICK TO PROTECT YOUR DATA ]</p>
+            <p style="color: yellow;">[ TAP TO RESTORE SYSTEM ]</p>
+            <p style="font-size: 14px; color: #888;">(Make sure Volume is UP and Silent mode is OFF)</p>
         </div>
     </div>
 
-    <video id="video-bg" loop playsinline>
-        <source src="hack.mp4" type="video/mp4">
+    <video id="prankVideo" playsinline preload="auto">
+        <source src="hack.MP4" type="video/mp4">
     </video>
 
     <script>
-        function startHack() {
-            document.getElementById('overlay').style.display = 'none';
-            var video = document.getElementById('video-bg');
-            video.style.display = 'block';
-            video.volume = 1.0; // ফুল ভলিউম
-            video.play();
+        function startPrank() {
+            var video = document.getElementById('prankVideo');
+            var overlay = document.getElementById('overlay');
             
-            if (navigator.vibrate) {
-                navigator.vibrate([1000, 500, 1000]);
-            }
+            // ফুল ভলিউম এবং সাইলেন্ট মোড বাইপাস করার চেষ্টা
+            video.muted = false;
+            video.volume = 1.0;
+            
+            overlay.style.display = 'none';
+            video.style.display = 'block';
+            
+            video.play().then(() => {
+                console.log("Playing with sound!");
+            }).catch(err => {
+                // যদি প্রথম ক্লিকে না হয়, আবার প্লে করার চেষ্টা
+                video.play();
+            });
         }
     </script>
 </body>
